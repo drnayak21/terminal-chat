@@ -80,10 +80,14 @@ body, html {
 .message {
   max-width: 70%;
   margin-bottom: 8px;
-  padding: 5px 8px;
-  border-radius: 4px;
+  padding: 5px 12px; /* slightly more padding */
+  border-radius: 6px; /* rounder corners */
   word-wrap: break-word;
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent black bg */
+  border: 1px solid #00ff00; /* subtle terminal-style border */
+  font-weight: bold; /* makes colored text pop */
 }
+
 
 /* YOUR MESSAGE → LEFT */
 .self {

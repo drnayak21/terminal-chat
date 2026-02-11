@@ -50,20 +50,28 @@ socket.on("message", (data) => {
   const msg = document.createElement("div");
 
   // SYSTEM messages → center
-  if (data.user === "SYSTEM") {
-    msg.classList.add("system");
-    msg.textContent = `[ ${data.text} ]`;
-  } 
-  // YOUR messages → LEFT
-  else if (data.user === username) {
-    msg.classList.add("message", "self");
-    msg.textContent = `${data.user}: ${data.text}`;
-  } 
-  // OTHER users → RIGHT
-  else {
-    msg.classList.add("message", "other");
-    msg.textContent = `${data.user}: ${data.text}`;
+if (data.user === "SYSTEM") {
+  msg.classList.add("system");
+  msg.textContent = `[ ${data.text} ]`;
+} 
+else {
+  msg.classList.add("message");
+
+  // Set text color based on username
+  msg.style.color = getColor(data.user);
+
+  // Align self vs other
+  if (data.user === username) {
+    msg.classList.add("self");
+    msg.style.textAlign = "left";
+  } else {
+    msg.classList.add("other");
+    msg.style.textAlign = "right";
   }
+
+  msg.textContent = `${data.user}: ${data.text}`;
+}
+
 
   messagesDiv.appendChild(msg);
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
@@ -76,4 +84,15 @@ socket.on("onlineUsers", (users) => {
   onlineCount.textContent = users.length;
 });
 
+// Predefined set of colors
+const colors = ["#00ff7f", "#00bfff", "#ff4500", "#ff69b4", "#ffff00", "#ff8c00", "#adff2f", "#7b68ee"];
+
+// Simple hash function to get consistent color per username
+function getColor(username) {
+  let hash = 0;
+  for (let i = 0; i < username.length; i++) {
+    hash = username.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return colors[Math.abs(hash) % colors.length];
+}
 
