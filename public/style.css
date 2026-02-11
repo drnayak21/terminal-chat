@@ -7,6 +7,7 @@ body, html {
   background: black;
   color: #00ff00;
   font-family: monospace;
+  font-size: 16px;
 }
 
 /* LOGIN CENTERED */
@@ -53,7 +54,7 @@ body, html {
   font-size: 16px;
 }
 
-
+/* INPUT AREA */
 #input-area {
   display: flex;
   align-items: center;
@@ -75,32 +76,27 @@ body, html {
   font-size: 16px;
 }
 
-
 /* MESSAGE STYLES */
 .message {
   max-width: 70%;
-  margin-bottom: 8px;
-  padding: 5px 12px; /* slightly more padding */
-  border-radius: 6px; /* rounder corners */
+  margin-bottom: 5px;
+  padding: 0;         /* no box padding */
   word-wrap: break-word;
-  background: rgba(0, 0, 0, 0.4); /* semi-transparent black bg */
-  border: 1px solid #00ff00; /* subtle terminal-style border */
-  font-weight: bold; /* makes colored text pop */
+  font-weight: bold;  /* terminal bold text */
+  background: none;   /* no background box */
+  border: none;
 }
-
 
 /* YOUR MESSAGE → LEFT */
 .self {
   align-self: flex-start;
   text-align: left;
-  color: #00ff7f;
 }
 
 /* OTHER USERS → RIGHT */
 .other {
   align-self: flex-end;
   text-align: right;
-  color: #00bfff;
 }
 
 /* SYSTEM MESSAGE → CENTER */
@@ -109,5 +105,10 @@ body, html {
   color: #888;
   font-style: italic;
   margin: 10px 0;
+}
+
+/* Ensure random colors are readable on black */
+.message {
+  text-shadow: 0 0 2px black; /* subtle outline for readability */
 }
 
