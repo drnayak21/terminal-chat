@@ -87,12 +87,18 @@ socket.on("message", (data) => {
   }
 
   messagesDiv.appendChild(msg);
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+  // Scroll smoothly to bottom
+  messagesDiv.scrollTo({
+    top: messagesDiv.scrollHeight,
+    behavior: 'smooth'
+  });
 });
 
 // update online users count
 socket.on("onlineUsers", (users) => {
   onlineCount.textContent = users.length;
 });
+
 
 
