@@ -7,7 +7,8 @@ body, html {
   background: black;
   color: #00ff00;
   font-family: monospace;
-  font-size: 16px; /* all text base size */
+  font-size: 16px;
+  overflow: hidden; /* no page scrolling */
 }
 
 /* LOGIN CENTERED */
@@ -38,25 +39,28 @@ body, html {
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100vh; /* full viewport */
+  height: 100vh; /* full viewport height */
+  overflow: hidden; /* page does not scroll */
 }
 
 /* TOPBAR */
 #topbar {
   padding: 10px;
   border-bottom: 1px solid #00ff00;
+  flex-shrink: 0;
 }
 
 /* MESSAGES TAKE REST OF SPACE */
 #messages {
   flex: 1;
   padding: 10px;
-  overflow-y: auto;   
+  overflow-y: auto;   /* scroll only inside messages */
   display: flex;
   flex-direction: column;
-  font-size: 16px;       /* uniform size for all messages */
-  line-height: 1.4;      /* prevent big gaps on long messages */
-  word-break: break-word; /* break long words instead of resizing text */
+  font-size: 16px;
+  line-height: 1.4;
+  word-break: break-word;
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
 }
 
 /* INPUT AREA STICKS AT BOTTOM */
@@ -65,16 +69,14 @@ body, html {
   align-items: center;
   padding: 10px;
   border-top: 1px solid #00ff00;
+  background: black;
+  flex-shrink: 0;
   position: sticky;
   bottom: 0;
-  background: black; 
-  z-index: 10;       
+  z-index: 10;
 }
 
-#input-area .prompt {
-  margin-right: 5px;
-}
-
+/* INPUT FIELD */
 #messageInput {
   flex: 1;
   background: black;
@@ -82,21 +84,23 @@ body, html {
   outline: none;
   color: #00ff00;
   font-family: monospace;
-  font-size: 16px; /* same size as messages */
+  font-size: 16px;
+  min-width: 0; /* ensures it fits tiny screens */
 }
 
-/* MESSAGE STYLES */
+/* MESSAGES */
 .message {
-  max-width: 70%;
+  max-width: 90%;        /* fits small screens */
   margin-bottom: 5px;
-  padding: 0;         
-  font-weight: bold;  
-  background: none;   
+  padding: 0;
+  font-weight: bold;
+  background: none;
   border: none;
-  text-shadow: 0 0 2px black; 
-  font-size: 16px;       /* enforce same size */
-  white-space: pre-wrap;  /* preserve line breaks for long messages */
-  flex-shrink: 0;         /* prevent flex from shrinking text */
+  text-shadow: 0 0 2px black; /* terminal glow */
+  font-size: 16px;
+  white-space: pre-wrap;  /* preserves line breaks */
+  flex-shrink: 0;
+  word-break: break-word;
 }
 
 /* YOUR MESSAGE → LEFT */
@@ -118,5 +122,19 @@ body, html {
   font-style: italic;
   margin: 10px 0;
 }
+
+/* MOBILE OPTIMIZATION */
+@media screen and (max-width: 500px) {
+  #messages {
+    font-size: 14px;  /* slightly smaller, readable on tiny screens */
+  }
+  #messageInput {
+    font-size: 14px;
+  }
+  #messages .message {
+    max-width: 95%;   /* use almost full width */
+  }
+}
+
 
 
