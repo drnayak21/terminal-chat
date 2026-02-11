@@ -1,0 +1,109 @@
+/* BODY FULLSCREEN */
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: black;
+  color: #00ff00;
+  font-family: monospace;
+}
+
+/* LOGIN CENTERED */
+#login {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login h1 {
+  margin-bottom: 20px;
+  font-size: 36px;
+}
+
+#login input {
+  padding: 10px;
+  font-size: 18px;
+  background: black;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  text-align: center;
+}
+
+/* CHAT SCREEN */
+#chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#topbar {
+  padding: 10px;
+  border-bottom: 1px solid #00ff00;
+}
+
+#messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+
+#input-area {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #00ff00;
+}
+
+#input-area .prompt {
+  margin-right: 5px;
+}
+
+#messageInput {
+  flex: 1;
+  background: black;
+  border: none;
+  outline: none;
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 16px;
+}
+
+
+/* MESSAGE STYLES */
+.message {
+  max-width: 70%;
+  margin-bottom: 8px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  word-wrap: break-word;
+}
+
+/* YOUR MESSAGE → LEFT */
+.self {
+  align-self: flex-start;
+  text-align: left;
+  color: #00ff7f;
+}
+
+/* OTHER USERS → RIGHT */
+.other {
+  align-self: flex-end;
+  text-align: right;
+  color: #00bfff;
+}
+
+/* SYSTEM MESSAGE → CENTER */
+.system {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin: 10px 0;
+}
+

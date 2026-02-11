@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Terminal Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- LOGIN SCREEN -->
+  <div id="login">
+    <h1>TERMINAL CHAT</h1>
+    <input id="usernameInput" placeholder="Enter username" autocomplete="off"/>
+  </div>
+
+  <!-- CHAT SCREEN -->
+  <div id="chat" style="display:none;">
+    <div id="topbar">
+      Online: <span id="onlineCount">0</span>
+    </div>
+
+    <div id="messages"></div>
+
+    <div id="input-area">
+      <span class="prompt">&gt;</span>
+      <input id="messageInput" placeholder="Type message..." autocomplete="off"/>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+
+</html>
+
